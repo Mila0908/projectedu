@@ -193,5 +193,48 @@ git clone dir1 dir2  -- it makes another copy of local repo, this is local cloni
 
 git clone "remote URl"
 
+Install Git on --- Ubuntu OS
 
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:git-core/ppa -y
+sudo apt-get update
+sudo apt-get install git -y
+git --version ( if it writes the version then the installation is successful )
+
+=================================================================================
+
+Install Git on --- CentOS / Fedora / RedHat
+
+sudo yum update
+sudo yum install git
+
+=================================================================================
+
+config setup
+
+git config --global user.name naresh
+git config --global user.email naresh@gmail.com
+git config --global help.autocorrect 1
+git config --global core.editor vim
+git config --list
+
+==================================================================================
+#!/bin/bash
+
+which git
+
+if [ $? -eq "0" ];then
+   echo "`git --version` - is already installed on `hostname`"
+   exit
+else
+  echo "No git installation found -- proceeding with git installation..."
+  sudo apt-get install -y python-software-properties
+  sudo apt-get install -y software-properties-common
+  sudo apt-get remove -y git git-core
+  sudo apt-add-repository --yes ppa:git-core/ppa
+  sudo apt-get update
+  sudo apt-get install -y git
+  echo "`git --version` installed Successfully"
+fi
+exit
 
